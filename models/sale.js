@@ -5,10 +5,11 @@ const mongoose = require("mongoose");
 const saleSchema = new mongoose.Schema({
     saleName: String,
     location: String,
+    saleImage: String,
     saleDescription: String,
     time: String,
     date: String,
-    categoryTags: String,
+    saleTags: String,
     zipCode: Number,
 });
 

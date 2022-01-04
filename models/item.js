@@ -6,8 +6,8 @@ const itemSchema = new mongoose.Schema({
     itemName: String,
     price: Number,
     itemDescription: String,
-    tags: String,
-    imageUrl: String,
+    itemTags: String,
+    itemImage: String,
 });
 
 const Item = mongoose.model("Item", itemSchema);
