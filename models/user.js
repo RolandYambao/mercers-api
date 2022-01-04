@@ -9,6 +9,27 @@ const userSchema = new mongoose.Schema({
     address: String,
     phone: Number,
     password: String,
+    sale: [saleSchema],
+});
+
+const saleSchema = new mongoose.Schema({
+    saleName: String,
+    location: String,
+    saleImage: String,
+    saleDescription: String,
+    time: String,
+    date: String,
+    saleTags: String,
+    zipCode: Number,
+    item: [itemSchema],
+});
+
+const itemSchema = new mongoose.Schema({
+    itemName: String,
+    price: Number,
+    itemDescription: String,
+    itemTags: String,
+    itemImage: String,
 });
 
 const User = mongoose.model("User", userSchema);
