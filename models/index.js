@@ -23,6 +23,4 @@ db.on("error", () => {
 
 module.exports = {
     User: require("./users"),
-    Sale: require("./sales"),
-    Item: require("./items"),
 };

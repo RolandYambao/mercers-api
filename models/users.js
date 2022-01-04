@@ -2,14 +2,12 @@
 // user schema
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-    userName: String,
-    profilePic: String,
-    email: String,
-    address: String,
-    phone: Number,
-    password: String,
-    sale: [saleSchema],
+const itemSchema = new mongoose.Schema({
+    itemName: String,
+    price: Number,
+    itemDescription: String,
+    itemTags: String,
+    itemImage: String,
 });
 
 const saleSchema = new mongoose.Schema({
@@ -24,12 +22,14 @@ const saleSchema = new mongoose.Schema({
     item: [itemSchema],
 });
 
-const itemSchema = new mongoose.Schema({
-    itemName: String,
-    price: Number,
-    itemDescription: String,
-    itemTags: String,
-    itemImage: String,
+const userSchema = new mongoose.Schema({
+    userName: String,
+    profilePic: String,
+    email: String,
+    address: String,
+    phone: Number,
+    password: String,
+    sale: [saleSchema],
 });
 
 const User = mongoose.model("User", userSchema);
