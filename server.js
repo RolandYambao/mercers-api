@@ -1,5 +1,7 @@
 const express = require("express");
 const { User } = require('./models');
+const { Sale } = require('./models');
+const { Item } = require('./models');
 const app = express();
 
 app.use((req, res, next) => {
