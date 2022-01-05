@@ -107,4 +107,21 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
     res.json({ id, userName, email });
 });
 
+router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
+    req.user.sale.push(
+        {
+            saleName: "anotherName",
+            location: "anotherLOcation",
+            saleImage: "anotherImage",
+            saleDescription: "anotherDescription",
+            time: "anotherTime",
+            date: "anotherDate",
+            saleTags: "anotherTag",
+            zipCode: 012345,
+            item: [],
+        }
+    )
+    res.json({ saleName, location, saleImage, saleDescription, time, saleTags, zipCode, item });
+});
+
 module.exports = router;
