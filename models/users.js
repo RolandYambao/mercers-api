@@ -1,5 +1,4 @@
-// our first collection schema
-// user schema
+require('dotenv').config();
 const mongoose = require("mongoose");
 
 const itemSchema = new mongoose.Schema({
