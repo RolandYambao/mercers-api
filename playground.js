@@ -1,22 +1,22 @@
 const { User } = require("./models");
 
-User.insertMany([
-    {
-        userName: "Name",
-        profilePic: "Link",
-        email: "email@email.com",
-        address: "Address",
-        phone: 123,
-        password: "Password",
-        sale: [],
-    }
-])
-    .then((newUser) => {
-        console.log(newUser);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+// User.insertMany([
+//     {
+//         userName: "Name",
+//         profilePic: "Link",
+//         email: "email@email.com",
+//         address: "Address",
+//         phone: 123,
+//         password: "Password",
+//         sale: [],
+//     }
+// ])
+//     .then((newUser) => {
+//         console.log(newUser);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     });
 
 User.findOne({ userName: "Name" })
     .then((user) => {
