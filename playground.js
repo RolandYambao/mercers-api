@@ -18,31 +18,44 @@ const { User } = require("./models");
 //         console.log(error);
 //     });
 
-User.findOne({ userName: "Name" })
-    .then((user) => {
-        console.log(user);
-        user.sale.push(
-            {
-                saleName: "saleName",
-                location: "location",
-                saleImage: "saleImage",
-                saleDescription: "saleDescription",
-                time: "time",
-                date: "date",
-                saleTags: "saleTags",
-                zipCode: 012345,
-                item: [
-                    {
-                        itemName: "itemName",
-                        price: 12,
-                        itemDescription: "itemDescription",
-                        itemTags: "itemTags",
-                        itemImage: "itemImage",
-                    }
-                ],
-            }
-        )
-        user.save(function (err) {
-            if (!err) console.log('Success!');
-        });
-    })
+// User.findOne({ userName: "Name" })
+//     .then((user) => {
+//         console.log(user);
+//         user.sale.push(
+//             {
+//                 saleName: "saleName",
+//                 location: "location",
+//                 saleImage: "saleImage",
+//                 saleDescription: "saleDescription",
+//                 time: "time",
+//                 date: "date",
+//                 saleTags: "saleTags",
+//                 zipCode: 012345,
+//                 item: [],
+//             }
+//         )
+//         user.save(function (err) {
+//             if (!err) console.log('Success!');
+//         });
+//     })
+
+// User.findOne({ userName: "Name" })
+//     .then((user) => {
+//         console.log(user.sale[0].item);
+//         user.sale[0].item.push(
+//             {
+//                 itemName: "newItem",
+//                 price: 15,
+//                 itemDescription: "newDescription",
+//                 itemTags: "newTags",
+//                 itemImage: "newImage",
+//             }
+//         )
+//         user.save(function (err) {
+//             if (!err) console.log('Success!');
+//         });
+//     })
+
+// User.deleteMany({}, function (err) {
+//     console.log("Successful Deletion");
+// })
