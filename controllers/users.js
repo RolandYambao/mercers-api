@@ -121,7 +121,7 @@ router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res
             item: [],
         }
     )
-    res.json({ saleName, location, saleImage, saleDescription, time, saleTags, zipCode, item });
+    // res.json({ saleName, location, saleImage, saleDescription, time, saleTags, zipCode, item });
 });
 
 module.exports = router;
