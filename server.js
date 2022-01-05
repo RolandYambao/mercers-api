@@ -1,6 +1,11 @@
+require('dotenv').config();
 const express = require("express");
-const { User } = require('./models');
+const cors = require('cors');
 const app = express();
+const passport = require('passport');
+require('./config/passport')(passport);
+
+const PORT = process.env.PORT || 8000;
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -11,17 +16,23 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
+app.use(passport.initialize());
 
-app.get("/users", async (request, response) => {
-    try {
-        const userArray = await User.find({});
-        response.json({ userArray });
-    } catch (error) {
-        response.status(500).send(error);
-    }
+// controllers
+const users = require('./controllers/users');
+
+// home route
+app.get('/', (req, res) => {
+    res.json({
+        message: "Welcome to the Mercers Authentication API"
+    });
 });
 
-app.listen(3000, () => {
-    console.log("Server is running at port 3000");
+app.use('/users', users);
+
+app.listen(PORT, () => {
+    console.log(`Server listening on PORT`, PORT);
 });
