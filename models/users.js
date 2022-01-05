@@ -5,7 +5,7 @@ const itemSchema = new mongoose.Schema({
     itemName: String,
     price: Number,
     itemDescription: String,
-    itemTags: String,
+    itemTags: [],
     itemImage: String,
 });
 
@@ -16,7 +16,7 @@ const saleSchema = new mongoose.Schema({
     saleDescription: String,
     time: String,
     date: String,
-    saleTags: String,
+    saleTags: [],
     zipCode: Number,
     item: [itemSchema],
 });

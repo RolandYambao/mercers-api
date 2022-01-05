@@ -29,7 +29,7 @@ const { User } = require("./models");
 //                 saleDescription: "saleDescription",
 //                 time: "time",
 //                 date: "date",
-//                 saleTags: "saleTags",
+//                 saleTags: ["object", "thing"],
 //                 zipCode: 012345,
 //                 item: [],
 //             }
@@ -47,7 +47,7 @@ const { User } = require("./models");
 //                 itemName: "newItem",
 //                 price: 15,
 //                 itemDescription: "newDescription",
-//                 itemTags: "newTags",
+//                 itemTags: ["stuff", "item"],
 //                 itemImage: "newImage",
 //             }
 //         )
