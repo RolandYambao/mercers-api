@@ -120,6 +120,7 @@ router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res
         item: [],
     }]
     req.user.sale = sale;
+    console.log(req.user.sale);
     res.json({ sale });
 });
 
