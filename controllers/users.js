@@ -130,9 +130,9 @@ router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res
 });
 
 router.post('/item', passport.authenticate('jwt', { session: false }), (req, res) => {
-    console.log(req.user.sale);
     User.findOne({ sale: req.user.sale })
         .then(user => {
+            console.log("SALE", req.user.sale)
             user.sale.item.push(
                 {
                     itemName: req.body.itemName,
@@ -146,7 +146,6 @@ router.post('/item', passport.authenticate('jwt', { session: false }), (req, res
                 if (!err) console.log('Success!');
             });
         });
-
 })
 
 module.exports = router;
