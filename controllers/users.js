@@ -132,7 +132,7 @@ router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res
 router.post('/item', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.user.id)
         .then(user => {
-            user.sale[1].item.push(
+            user.sale[Number(req.body.saleNumber)].item.push(
                 {
                     itemName: req.body.itemName,
                     price: req.body.price,
