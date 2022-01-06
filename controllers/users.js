@@ -108,9 +108,9 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 });
 
 router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
-    User.findOne({ userName: req.body.userName })
+    User.findOne({ id: req.user.id })
         .then(user => {
-            req.user.sale.push(
+            user.sale.push(
                 {
                     saleName: req.body.saleName,
                     location: req.body.location,
@@ -123,9 +123,9 @@ router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res
                     item: [],
                 }
             )
-                .catch(err => {
-                    console.log('Error', err);
-                })
+            user.save(function (err) {
+                if (!err) console.log('Success!');
+            });
         })
 });
 
@@ -141,9 +141,6 @@ router.post('/item', passport.authenticate('jwt', { session: false }), (req, res
                     itemImage: req.body.itemImage,
                 }
             )
-                .catch(err => {
-                    console.log('Error', err);
-                })
         });
 
 })
