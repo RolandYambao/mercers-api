@@ -108,7 +108,7 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 });
 
 router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
-    User.findOne({ id: req.user.id })
+    User.findById(req.user.id)
         .then(user => {
             user.sale.push(
                 {
@@ -130,7 +130,7 @@ router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res
 });
 
 router.post('/item', passport.authenticate('jwt', { session: false }), (req, res) => {
-    User.findOne({ id: req.user.id })
+    User.findById(req.user.id)
         .then(user => {
             user.sale[0].item.push(
                 {
