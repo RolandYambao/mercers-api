@@ -107,68 +107,36 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
     res.json({ id, userName, email });
 });
 
-router.get('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
-    // console.log('====> inside /profile');
-    console.log('====> user', req.user);
-    User.findById(req.user.id)
-    .then(user =>{
-        // console.log(user)
-        console.log('THIS IS THE USERS SALES', user.sale)
-    res.json( {user} );
-    })
-});
-
-
-
-
 router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
-    User.findById(req.user.id)
-        .then(user => {
-            // console.log('THIS IS THE WHOLE REQ', req)
-            user.sale.push(
-                {
-                    saleName: req.body.saleName,
-                    location: req.body.location,
-                    saleImage: req.body.saleImage,
-                    saleDescription: req.body.saleDescription,
-                    time: req.body.time,
-                    date: req.body.date,
-                    saleTags: req.body.saleTags,
-                    zipCode: req.body.zipCode,
-                    item: [],
-                
-                }
-            )
-            user.save(function (err) {
-                if (!err) console.log('Success!');
-                else{
-                    console.log(err);
-                }
-            });
-        })
+    console.log(req.body);
+    req.user.sale.push(
+        {
+            saleName: req.body.saleName,
+            location: req.body.location,
+            saleImage: req.body.saleImage,
+            saleDescription: req.body.saleDescription,
+            time: req.body.time,
+            date: req.body.date,
+            saleTags: req.body.saleTags,
+            zipCode: req.body.zipCode,
+            item: [],
+        }
+    )
+    console.log(req.user.sale);
 });
 
 router.post('/item', passport.authenticate('jwt', { session: false }), (req, res) => {
-    User.findById(req.user.id)
-        .then(user => {
-            console.log(user)
-            console.log('THIS IS THE REQ', req.body)
-            user.sale[0].item.push(
-                {
-                    itemName: req.body.itemName,
-                    price: req.body.price,
-                    itemDescription: req.body.itemDescription,
-                    itemTags: req.body.itemTags,
-                    itemImage: req.body.itemImage,
-                }
-            )
-            user.save(function (err) {
-                if (!err) console.log('Success!');
-                else{
-                    console.log(err);
-                }
-            });
-        });
-})
+    console.log(req.body);
+    req.user.sale[0].item.push(
+        {
+            itemName: req.body.itemName,
+            price: req.body.price,
+            itemDescription: req.body.itemDescription,
+            itemTags: req.body.itemTags,
+            itemImage: req.body.itemImage,
+        }
+    )
+    console.log(req.user.sale[0].item);
+});
 
 module.exports = router;
