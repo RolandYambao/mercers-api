@@ -111,15 +111,12 @@ router.get('/sale', passport.authenticate('jwt', { session: false }), (req, res)
     // console.log('====> inside /profile');
     console.log('====> user', req.user);
     User.findById(req.user.id)
-    .then(user =>{
-        // console.log(user)
-        console.log('THIS IS THE USERS SALES', user.sale)
-    res.json( {user} );
-    })
+        .then(user => {
+            // console.log(user)
+            console.log('THIS IS THE USERS SALES', user.sale)
+            res.json({ user });
+        })
 });
-
-
-
 
 router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.user.id)
@@ -151,9 +148,7 @@ router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res
 router.post('/item', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.user.id)
         .then(user => {
-            console.log(user)
-            console.log('THIS IS THE REQ', req.body)
-            user.sale[0].item.push(
+            user.sale[Number(req.body.saleNumber)].item.push(
                 {
                     itemName: req.body.itemName,
                     price: req.body.price,
