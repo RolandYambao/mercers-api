@@ -107,6 +107,17 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
     res.json({ id, userName, email });
 });
 
+router.get('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
+    // console.log('====> inside /profile');
+    console.log('====> user', req.user);
+    User.findById(req.user.id)
+        .then(user => {
+            // console.log(user)
+            console.log('THIS IS THE USERS SALES', user.sale)
+            res.json({ user });
+        })
+});
+
 router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.user.id)
         .then(user => {
