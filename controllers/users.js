@@ -103,20 +103,28 @@ router.post('/login', async (req, res) => {
 router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {
     console.log('====> inside /profile');
     console.log('====> user', req.user);
-    const { id, userName, email } = req.user; // object with user object inside
-    res.json({ id, userName, email });
+    const returnedUser = Object.assign(req.user, {});
+    returnedUser.password = null;
+    res.json({ user: returnedUser });
 });
 
-router.get('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
-    // console.log('====> inside /profile');
-    console.log('====> user', req.user);
+// Access to all Data that isn't Editable
+router.get('/other-stuff', async (req, res) => {
+    User.find()
+        .then(user => {
+            const returnedUser = Object.assign(user, {});
+            returnedUser.password = null;
+            res.json({ user: returnedUser });
+            // console.log(returnedUser[0].sale[4].saleName);
+        })
+});
+
+// Access to your Data you can Edit
+router.get('/your-stuff', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.user.id)
         .then(user => {
-            // console.log(user)
-            console.log('THIS IS THE USERS SALES', user.sale);
             const returnedUser = Object.assign(user, {});
-            console.log('THIS IS RETURNED USER', returnedUser);
-            returnedUser.password = null 
+            returnedUser.password = null;
             res.json({ user: returnedUser });
         })
 });
