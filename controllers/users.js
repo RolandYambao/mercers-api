@@ -108,27 +108,18 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
     res.json({ user: returnedUser });
 });
 
-// Get All Users 
-router.get('/user', async (req, res) => {
+// Access to all Data that isn't Editable
+router.get('/other-stuff', async (req, res) => {
     User.find()
         .then(user => {
             const returnedUser = Object.assign(user, {});
             returnedUser.password = null;
             res.json({ user: returnedUser });
+            // console.log(returnedUser[0].sale[4].saleName);
         })
 });
 
-// Get the Sales and Items from other Vendors
-router.get('/other-stuff', async (req, res) => {
-    User.findOne(req.user)
-        .then(user => {
-            const returnedUser = Object.assign(user, {});
-            returnedUser.password = null;
-            res.json({ user: returnedUser });
-        })
-});
-
-// Access your Sale and Items
+// Access to your Data you can Edit
 router.get('/your-stuff', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.user.id)
         .then(user => {
