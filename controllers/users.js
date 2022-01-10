@@ -110,7 +110,7 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 
 // Get All Users 
 router.get('/user', async (req, res) => {
-    User.findAll()
+    User.find()
         .then(user => {
             const returnedUser = Object.assign(user, {});
             returnedUser.password = null;
@@ -120,7 +120,7 @@ router.get('/user', async (req, res) => {
 
 // Get the Sales and Items from other Vendors
 router.get('/other-stuff', async (req, res) => {
-    User.findById(req.user.id)
+    User.findOne(req.user)
         .then(user => {
             const returnedUser = Object.assign(user, {});
             returnedUser.password = null;
