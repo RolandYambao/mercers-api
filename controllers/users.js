@@ -113,8 +113,11 @@ router.get('/sale', passport.authenticate('jwt', { session: false }), (req, res)
     User.findById(req.user.id)
         .then(user => {
             // console.log(user)
-            console.log('THIS IS THE USERS SALES', user.sale)
-            res.json({ user });
+            console.log('THIS IS THE USERS SALES', user.sale);
+            const returnedUser = Object.assign(user, {});
+            console.log('THIS IS RETURNED USER', returnedUser);
+            returnedUser.password = null 
+            res.json({ user: returnedUser });
         })
 });
 
