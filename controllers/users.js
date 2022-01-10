@@ -103,18 +103,38 @@ router.post('/login', async (req, res) => {
 router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {
     console.log('====> inside /profile');
     console.log('====> user', req.user);
-    const { id, userName, email } = req.user; // object with user object inside
-    res.json({ id, userName, email });
+    const returnedUser = Object.assign(req.user, {});
+    returnedUser.password = null;
+    res.json({ user: returnedUser });
 });
 
-router.get('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
-    // console.log('====> inside /profile');
-    console.log('====> user', req.user);
+// Get All Users 
+router.get('/user', async (req, res) => {
+    User.findAll()
+        .then(user => {
+            const returnedUser = Object.assign(user, {});
+            returnedUser.password = null;
+            res.json({ user: returnedUser });
+        })
+});
+
+// Get the Sales and Items from other Vendors
+router.get('/other-stuff', async (req, res) => {
     User.findById(req.user.id)
         .then(user => {
-            // console.log(user)
-            console.log('THIS IS THE USERS SALES', user.sale)
-            res.json({ user });
+            const returnedUser = Object.assign(user, {});
+            returnedUser.password = null;
+            res.json({ user: returnedUser });
+        })
+});
+
+// Access your Sale and Items
+router.get('/your-stuff', passport.authenticate('jwt', { session: false }), (req, res) => {
+    User.findById(req.user.id)
+        .then(user => {
+            const returnedUser = Object.assign(user, {});
+            returnedUser.password = null;
+            res.json({ user: returnedUser });
         })
 });
 
