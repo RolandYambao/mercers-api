@@ -115,7 +115,6 @@ router.get('/other-stuff', async (req, res) => {
             const returnedUser = Object.assign(user, {});
             returnedUser.password = null;
             res.json({ user: returnedUser });
-            // console.log(returnedUser[0].sale[4].saleName);
         })
 });
 
@@ -176,5 +175,19 @@ router.post('/item', passport.authenticate('jwt', { session: false }), (req, res
             });
         });
 })
+
+// router.update('/your-sale', passport.authenticate('jwt', { session: false }), (req, res) => {
+//     User.findById(req.user.id)
+//         .then(user => {
+//             user.sale.
+//         })
+// });
+
+// router.update('/your-item', passport.authenticate('jwt', { session: false }), (req, res) => {
+//     User.findById(req.user.id)
+//         .then(user => {
+
+//         })
+// });
 
 module.exports = router;
