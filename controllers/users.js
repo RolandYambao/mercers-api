@@ -135,7 +135,6 @@ router.get('/your-stuff', passport.authenticate('jwt', { session: false }), (req
 router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.user.id)
         .then(user => {
-            // console.log('THIS IS THE WHOLE REQ', req)
             user.sale.push(
                 {
                     saleName: req.body.saleName,
