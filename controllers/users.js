@@ -111,9 +111,13 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 // Access to all Data that isn't Editable
 router.get('/other-stuff', async (req, res) => {
     User.find()
-        .then(user => {
-            const returnedUser = Object.assign(user, {});
-            returnedUser.password = null;
+        .then(users => {
+            const returnedUser = Object.assign(users, {});
+            for (let i = 0; i < returnedUser.length; i++) {
+                returnedUser.map(() => {
+                    returnedUser[i].password = null;
+                })
+            }
             res.json({ user: returnedUser });
         })
 });
@@ -175,19 +179,5 @@ router.post('/item', passport.authenticate('jwt', { session: false }), (req, res
             });
         });
 })
-
-// router.update('/your-sale', passport.authenticate('jwt', { session: false }), (req, res) => {
-//     User.findById(req.user.id)
-//         .then(user => {
-//             user.sale.
-//         })
-// });
-
-// router.update('/your-item', passport.authenticate('jwt', { session: false }), (req, res) => {
-//     User.findById(req.user.id)
-//         .then(user => {
-
-//         })
-// });
 
 module.exports = router;
