@@ -135,6 +135,7 @@ router.get('/your-stuff', passport.authenticate('jwt', { session: false }), (req
 router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById(req.user.id)
         .then(user => {
+            // console.log('THIS IS THE WHOLE REQ', req)
             user.sale.push(
                 {
                     saleName: req.body.saleName,
@@ -146,10 +147,14 @@ router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res
                     saleTags: req.body.saleTags,
                     zipCode: req.body.zipCode,
                     item: [],
+                
                 }
             )
             user.save(function (err) {
                 if (!err) console.log('Success!');
+                else{
+                    console.log(err);
+                }
             });
         })
 });
@@ -168,6 +173,9 @@ router.post('/item', passport.authenticate('jwt', { session: false }), (req, res
             )
             user.save(function (err) {
                 if (!err) console.log('Success!');
+                else{
+                    console.log(err);
+                }
             });
         });
 })
