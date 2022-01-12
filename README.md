@@ -50,7 +50,7 @@
     <a href="https://github.com/onticinc/mercer/tree/main/docs"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/RolandYambao/mercers-api">View Backend</a>
+    <a href="https://github.com/onticinc/mercer">View Frontend</a>
     ·
     <a href="https://github.com/onticinc/mercer/issues">Report Bug</a>
     ·
@@ -77,13 +77,18 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#appearance">Appearance</a></li>
+    <li><a href="#technologies-used">Technologies Used</a></li>
+    <li><a href="#general-approach">General Approach</a></li>
+    <li><a href="#user-stories">User Stories</a></li>
+    <li><a href="#project-wireframes">Project Wireframes</a></li>
+    <li><a href="#roadblocks">Roadblocks</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
+
+<br>
 
 
 
@@ -262,13 +267,6 @@ Over time, the backend was connected in these pages and components, and the basi
 <!-- ROADBLOCKS -->
 
 ## Roadblocks
-
-Frontend:
-- Creating a functional map tool to allow users to view how near/far they are from the listings. We were able to produce the nonfunctional map element on the app, but making it functional in our timeframe was not tenable.
-
-- Bidding/Haggling/Reservation interaction. We wanted to allow potential buyers to post their best offer on an item, or make counteroffers, or pay extra to the seller to be able to reserve a product. We did not have enough time during the timeframe to attempt to implement these features.
-
-- Instant-listing. We wanted sellers to be able to take a big mass of things they want to sell (a ton of old equipment in the garage, for example), whip out their phone - and make dozens of listings quickly and easily. We did not have the time to address this functionality.
 
 Backend:
 - Connecting the Backend to the Frontend in the Production Stage
