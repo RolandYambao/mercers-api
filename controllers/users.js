@@ -147,12 +147,12 @@ router.post('/sale', passport.authenticate('jwt', { session: false }), (req, res
                     saleTags: req.body.saleTags,
                     zipCode: req.body.zipCode,
                     item: [],
-                
+
                 }
             )
             user.save(function (err) {
                 if (!err) console.log('Success!');
-                else{
+                else {
                     console.log(err);
                 }
             });
@@ -173,7 +173,7 @@ router.post('/item', passport.authenticate('jwt', { session: false }), (req, res
             )
             user.save(function (err) {
                 if (!err) console.log('Success!');
-                else{
+                else {
                     console.log(err);
                 }
             });
